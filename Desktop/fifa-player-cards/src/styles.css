@@ -1,0 +1,113 @@
+/* src/App.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .App {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+  }
+
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for text */
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  h1 {
+    color: #002855; /* Dark blue */
+    background-color: #007AFF; /* Blue */
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .PlayersList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .Card {
+    border: 2px solid #002855; /* Dark blue */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+    width: calc(33.333% - 40px); /* Three cards per row with gap */
+  margin: 1rem 0;
+  flex: 1;
+  min-width: 200px;
+  }
+  
+  .Card:hover {
+    transform: scale(1.05);
+  }
+  
+  .Card img {
+    border-bottom: 2px solid #007AFF; /* Blue */
+    border-radius: 10px 10px 0 0;
+    width: 100%;
+    height: 200px; /* Fixed height for consistent image size */
+    object-fit: cover; /* Ensure the image covers the area without distortion */
+    border-bottom: 2px solid #007AFF; /* Blue */
+    border-radius: 10px 10px 0 0;
+  }
+  
+  .Card .card-body {
+    background-color: #ffffff; /* White */
+  }
+  
+  .Card .card-title {
+    color: #002855; /* Dark blue */
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .Card .card-text {
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  .Card .card-text span {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .Card .card-text span:first-child {
+    color: #007AFF; /* Blue */
+  }
+  
+  .Card .card-text span:nth-child(2) {
+    color: #FF0000; /* Red */
+  }
+  
+  .Card .card-text span:nth-child(3) {
+    color: #008000; /* Green */
+  }
+  
+  .Card .card-text span:nth-child(4) {
+    color: #000000; /* Black */
+  }
+  
