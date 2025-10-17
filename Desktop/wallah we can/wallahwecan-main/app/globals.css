@@ -1,0 +1,369 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Remove horizontal scrollbar and modernize vertical scrollbar */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Guardian icon glossy effect */
+.icon-guardian {
+  background: linear-gradient(120deg, #E04403 0%, #062B7C 50%, #fff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  /* Note: non-prefixed text-fill-color is not standard */
+  position: relative;
+  filter: drop-shadow(0 1px 6px rgba(224,68,3,0.08));
+}
+
+.animate-glossy {
+  position: relative;
+  overflow: visible;
+}
+.animate-glossy::after {
+  content: '';
+  position: absolute;
+  left: -30%;
+  top: -30%;
+  width: 160%;
+  height: 160%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.15) 60%);
+  opacity: 0.9;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: glossy-move 2.5s linear infinite;
+  z-index: 2;
+}
+@keyframes glossy-move {
+  0% { left: -30%; top: -30%; }
+  100% { left: 100%; top: 100%; }
+}
+
+/* Modern scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #fb923c, #f97316);
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  width: 10px;
+}
+
+/* Firefox scrollbar */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #fb923c rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  :root {
+    /* Sitewide background: off-white */
+    --background: 0 0% 98%;
+    --foreground: 222.2 84% 4.9%;
+    /* Brand tokens */
+    --brand-blue: #062B7C;
+    --brand-orange: #E04403;
+    --brand-gold: #FFC27A;
+    --brand-cyan: #66D1FF;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.75rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    /* Sidebar variables */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+
+    /* Sidebar variables for dark mode */
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 0 0% 98%;
+    --sidebar-primary-foreground: 240 5.9% 10%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+/* Glass system tokens */
+@layer components {
+  /* Brand gradient text */
+  .text-brand-gradient {
+    @apply bg-clip-text text-transparent;
+    /* Navy → Orange → Gold */
+    background-image: linear-gradient(90deg, var(--brand-blue) 0%, var(--brand-orange) 50%, var(--brand-gold) 100%);
+  }
+  .bg-brand-gradient {
+    background-image: linear-gradient(90deg, var(--brand-blue), var(--brand-orange));
+  }
+  .ring-brand {
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--brand-orange) 40%, white 60%);
+  }
+  /* For dark/blue zones: white text, soft orange accents */
+  .glass-light {
+    @apply bg-white/10 backdrop-blur-md border border-white/20 text-white;
+  }
+  .glass-light-input {
+    @apply bg-white/10 text-white placeholder-white/70 border-white/20 focus-visible:ring-orange-400;
+  }
+  /* For light/orange zones: slate text, darker accents */
+  .glass-dark {
+    @apply bg-white/85 backdrop-blur-md border border-white/60 text-slate-900;
+  }
+  .glass-dark-input {
+    @apply bg-white/90 text-slate-900 placeholder-slate-500 border-white/60 focus-visible:ring-orange-600;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-inter;
+  }
+
+  /* Heading styles with Poppins font */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .heading,
+  .font-heading {
+    @apply font-poppins;
+  }
+
+  h1 {
+    @apply font-bold;
+  }
+
+  h2,
+  h3 {
+    @apply font-semibold;
+  }
+
+  h4,
+  h5,
+  h6 {
+    @apply font-semibold;
+  }
+
+  /* Body text styles with Inter font */
+  p,
+  span,
+  div,
+  a,
+  button,
+  input,
+  textarea,
+  label,
+  .body-text,
+  .font-body {
+    @apply font-inter;
+  }
+
+  /* Button text should be medium weight */
+  button {
+    @apply font-medium;
+  }
+
+  /* Input and form elements */
+  input,
+  textarea,
+  select {
+    @apply font-inter font-normal;
+  }
+
+  /* Navigation and menu items */
+  nav a,
+  .nav-item {
+    @apply font-inter font-medium;
+  }
+}
+
+/* Custom utility classes for font weights */
+@layer utilities {
+  .font-inter {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-poppins {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  }
+
+  /* Specific weight utilities */
+  .font-inter-regular {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 400;
+  }
+
+  .font-inter-medium {
+    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 500;
+  }
+
+  .font-poppins-semibold {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  .font-poppins-bold {
+    font-family: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+    font-weight: 700;
+  }
+}
+
+/* Meteor animation for UI components */
+.animate-meteor-effect {
+  animation: meteor 5s linear infinite;
+}
+
+@keyframes meteor {
+  0% {
+    transform: rotate(215deg) translateX(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: rotate(215deg) translateX(-500px);
+    opacity: 0;
+  }
+}
+
+.animate-move {
+  animation: move 5s linear infinite;
+}
+
+@keyframes move {
+  0%,
+  20%,
+  80%,
+  100% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1);
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* News ticker animation */
+.sliding-ticker {
+  animation: slide 20s linear infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Screen reader only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Print styles */
+@media print {
+  body {
+    @apply font-inter;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-poppins;
+  }
+}
+
+

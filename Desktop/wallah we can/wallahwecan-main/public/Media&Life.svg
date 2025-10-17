@@ -1,0 +1,15 @@
+<svg width="1520" height="216" viewBox="0 0 1520 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style type="text/css"><![CDATA[
+      @font-face {
+        font-family: 'General Sans SVG';
+        src: url('/fonts/general-sans/GeneralSans-Semibold.woff2') format('woff2');
+        font-weight: 600;
+        font-style: normal;
+        font-display: swap;
+      }
+      .title { font-family: 'General Sans SVG', 'General Sans', system-ui, sans-serif; font-weight: 600; fill: #000; }
+    ]]></style>
+  </defs>
+  <text class="title" x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" font-size="180">Media &amp; life</text>
+</svg>

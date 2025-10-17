@@ -1,0 +1,8 @@
+import { redirect } from "next/navigation";
+import { getLocale } from "next-intl/server";
+
+// PHASE 1 i18n fix: Redirect non-locale route to default locale path
+export default async function TransparencyPage() {
+  const locale = await getLocale();
+  redirect(`/${locale}/transparency`);
+}
